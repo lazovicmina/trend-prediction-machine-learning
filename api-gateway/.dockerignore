@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+
+*.joblib
+
+.venv/
+venv/
+.env
+
+.git/
+.gitignore
+
+*.log
+.DS_Store

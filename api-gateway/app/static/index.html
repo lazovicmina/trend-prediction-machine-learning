@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Trend Prediction Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f8f6;
+      color: #20352d;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    .header {
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 34px;
+    }
+
+    .header p {
+      margin: 0;
+      color: #60756d;
+      font-size: 16px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: #e2f3e9;
+      color: #28704c;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #42a66a;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .section-title {
+      margin-bottom: 16px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 5px;
+      font-size: 23px;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: #71837c;
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 5px 20px rgba(40, 70, 55, 0.08);
+      border: 1px solid #e3ebe6;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 20px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .classification-metrics {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .metric {
+      padding: 14px;
+      background: #f5faf7;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .metric-label {
+      display: block;
+      font-size: 12px;
+      color: #71837c;
+      margin-bottom: 6px;
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #285c45;
+    }
+
+    .button {
+      border: none;
+      border-radius: 10px;
+      padding: 11px 18px;
+      background: #438b65;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #347451;
+    }
+
+    .button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .button-secondary {
+      background: #6d8f7c;
+    }
+
+    .button-secondary:hover {
+      background: #597968;
+    }
+
+    .status-message {
+      min-height: 24px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #60756d;
+    }
+
+    .status-message.success {
+      color: #28704c;
+      font-weight: 600;
+    }
+
+    .status-message.error {
+      color: #b34b4b;
+      font-weight: 600;
+    }
+
+    .status-message.loading {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #557367;
+    }
+
+    .spinner {
+      width: 17px;
+      height: 17px;
+      border: 3px solid #dce9e1;
+      border-top-color: #438b65;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .form-card {
+      margin-top: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #52665d;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 10px 11px;
+      border: 1px solid #d4e0da;
+      border-radius: 9px;
+      font-size: 14px;
+      outline: none;
+      background: white;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: #65a482;
+    }
+
+    .form-actions {
+      margin-top: 20px;
+    }
+
+    .prediction-result {
+      margin-top: 16px;
+      padding: 16px;
+      background: #edf8f1;
+      border: 1px solid #d4eadc;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .prediction-result strong {
+      font-size: 20px;
+      color: #285c45;
+    }
+
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #84958e;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .model-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .classification-metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 550px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics,
+      .classification-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1>Trend Prediction Dashboard</h1>
+
+      <p>
+        Sistem za predviđanje trendova korišćenjem mašinskog učenja
+      </p>
+
+      <div class="status">
+        <span class="status-dot"></span>
+        Sistem je aktivan
+      </div>
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- REGRESIJA -->
+    <!-- ================================================= -->
+
+    <div class="section">
+
+      <div class="section-title">
+        <h2>Predviđanje količine prodaje</h2>
+        <p>
+          Regresioni modeli za predviđanje nedeljne prodaje.
+        </p>
+      </div>
+
+
+      <div class="model-grid">
+
+        <!-- LINEAR REGRESSION -->
+
+        <div class="card">
+
+          <h3>Linear Regression</h3>
+
+          <div class="metrics">
+
+            <div class="metric">
+              <span class="metric-label">MAE</span>
+              <span class="metric-value" id="linear-mae">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">RMSE</span>
+              <span class="metric-value" id="linear-rmse">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">R²</span>
+              <span class="metric-value" id="linear-r2">
+                —
+              </span>
+            </div>
+
+          </div>
+
+          <button class="button" id="linear-button" onclick="trainRegression('linear')">
+            Treniraj model
+          </button>
+
+          <div class="status-message" id="linear-status"></div>
+
+        </div>
+
+
+        <!-- RANDOM FOREST -->
+
+        <div class="card">
+
+          <h3>Random Forest</h3>
+
+          <div class="metrics">
+
+            <div class="metric">
+              <span class="metric-label">MAE</span>
+              <span class="metric-value" id="rf-mae">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">RMSE</span>
+              <span class="metric-value" id="rf-rmse">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">R²</span>
+              <span class="metric-value" id="rf-r2">
+                —
+              </span>
+            </div>
+
+          </div>
+
+          <button class="button" id="rf-button" onclick="trainRegression('rf')">
+            Treniraj model
+          </button>
+
+          <div class="status-message" id="rf-status"></div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- KLASIFIKACIJA -->
+    <!-- ================================================= -->
+
+    <div class="section">
+
+      <div class="section-title">
+
+        <h2>Predviđanje popularnosti proizvoda</h2>
+
+        <p>
+          Klasifikacioni modeli za procenu da li proizvod
+          pripada grupi popularnih proizvoda.
+        </p>
+
+      </div>
+
+
+      <div class="model-grid">
+
+
+        <!-- DECISION TREE -->
+
+        <div class="card">
+
+          <h3>Decision Tree</h3>
+
+          <div class="metrics classification-metrics">
+
+            <div class="metric">
+              <span class="metric-label">
+                Accuracy
+              </span>
+
+              <span class="metric-value" id="tree-accuracy">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">
+                Precision
+              </span>
+
+              <span class="metric-value" id="tree-precision">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">
+                Recall
+              </span>
+
+              <span class="metric-value" id="tree-recall">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">
+                F1
+              </span>
+
+              <span class="metric-value" id="tree-f1">
+                —
+              </span>
+            </div>
+
+          </div>
+
+          <button class="button" id="tree-button" onclick="trainClassification('decision_tree')">
+            Treniraj model
+          </button>
+
+          <div class="status-message" id="tree-status"></div>
+
+        </div>
+
+
+        <!-- XGBOOST -->
+
+        <div class="card">
+
+          <h3>XGBoost</h3>
+
+          <div class="metrics classification-metrics">
+
+            <div class="metric">
+              <span class="metric-label">
+                Accuracy
+              </span>
+
+              <span class="metric-value" id="xgb-accuracy">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">
+                Precision
+              </span>
+
+              <span class="metric-value" id="xgb-precision">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">
+                Recall
+              </span>
+
+              <span class="metric-value" id="xgb-recall">
+                —
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">
+                F1
+              </span>
+
+              <span class="metric-value" id="xgb-f1">
+                —
+              </span>
+            </div>
+
+          </div>
+
+          <button class="button" id="xgb-button" onclick="trainClassification('xgboost')">
+            Treniraj model
+          </button>
+
+          <div class="status-message" id="xgb-status"></div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- PREDIKCIJA PRODAJE -->
+    <!-- ================================================= -->
+
+    <div class="section">
+
+      <div class="section-title">
+
+        <h2>Predikcija prodaje</h2>
+
+        <p>
+          Unesite karakteristike za pojedinačnu predikciju.
+        </p>
+
+      </div>
+
+
+      <div class="card form-card">
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="store">
+              Store
+            </label>
+
+            <input type="number" id="store" min="1" value="1">
+          </div>
+
+
+          <div class="field">
+            <label for="dept">
+              Dept
+            </label>
+
+            <input type="number" id="dept" min="1" value="1">
+          </div>
+
+
+          <div class="field">
+            <label for="holiday">
+              Holiday
+            </label>
+
+            <select id="holiday">
+
+              <option value="0">
+                Ne
+              </option>
+
+              <option value="1">
+                Da
+              </option>
+
+            </select>
+          </div>
+
+
+          <div class="field">
+            <label for="year">
+              Year
+            </label>
+
+            <input type="number" id="year" value="2012">
+          </div>
+
+
+          <div class="field">
+            <label for="month">
+              Month
+            </label>
+
+            <input type="number" id="month" min="1" max="12" value="10">
+          </div>
+
+
+          <div class="field">
+            <label for="week">
+              Week of year
+            </label>
+
+            <input type="number" id="week" min="1" max="53" value="40">
+          </div>
+
+
+          <div class="field">
+            <label for="day">
+              Day of week
+            </label>
+
+            <input type="number" id="day" min="0" max="6" value="4">
+          </div>
+
+
+          <div class="field">
+            <label for="lag1">
+              Sales lag 1
+            </label>
+
+            <input type="number" id="lag1" min="0" value="15000">
+          </div>
+
+
+          <div class="field">
+            <label for="lag2">
+              Sales lag 2
+            </label>
+
+            <input type="number" id="lag2" min="0" value="14500">
+          </div>
+
+
+          <div class="field">
+            <label for="previous7">
+              Previous 7 weeks
+            </label>
+
+            <input type="number" id="previous7" min="0" value="15000">
+          </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button class="button button-secondary" id="prediction-button" onclick="predictSales()">
+            Predvidi prodaju
+          </button>
+
+          <div class="status-message" id="prediction-status"></div>
+
+          <div class="prediction-result" id="prediction-result">
+            Predviđena prodaja:
+            <strong id="prediction-value">
+              —
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer">
+      Trend Prediction Microservices
+    </div>
+
+  </div>
+
+
+  <script>
+
+    // =====================================================
+    // POMOĆNE FUNKCIJE ZA STATUS
+    // =====================================================
+
+    function prikaziUcitavanje(
+      element,
+      poruka
+    ) {
+      element.className =
+        "status-message loading";
+
+      element.innerHTML = `
+            <span class="spinner"></span>
+            <span>${poruka}</span>
+        `;
+    }
+
+
+    function prikaziUspeh(
+      element,
+      poruka
+    ) {
+      element.className =
+        "status-message success";
+
+      element.textContent =
+        "✓ " + poruka;
+    }
+
+
+    function prikaziGresku(
+      element,
+      poruka
+    ) {
+      element.className =
+        "status-message error";
+
+      element.textContent =
+        "✕ " + poruka;
+    }
+
+
+    function postaviDugme(
+      button,
+      disabled
+    ) {
+      button.disabled =
+        disabled;
+    }
+
+
+    // =====================================================
+    // REGRESIJA
+    // =====================================================
+
+    async function trainRegression(
+      model
+    ) {
+
+      const prefix =
+        model === "linear"
+          ? "linear"
+          : "rf";
+
+      const button =
+        document.getElementById(
+          prefix + "-button"
+        );
+
+      const status =
+        document.getElementById(
+          prefix + "-status"
+        );
+
+      prikaziUcitavanje(
+        status,
+        "Proces je u toku..."
+      );
+
+      postaviDugme(
+        button,
+        true
+      );
+
+      try {
+
+        const response =
+          await fetch(
+            `/modeli/treniraj?model=${model}`,
+            {
+              method: "POST"
+            }
+          );
+
+        const data =
+          await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.detail ||
+            "Greška prilikom treniranja modela."
+          );
+        }
+
+        document.getElementById(
+          prefix + "-mae"
+        ).textContent =
+          Number(data.mae).toFixed(2);
+
+        document.getElementById(
+          prefix + "-rmse"
+        ).textContent =
+          Number(data.rmse).toFixed(2);
+
+        document.getElementById(
+          prefix + "-r2"
+        ).textContent =
+          Number(data.r2).toFixed(4);
+
+        prikaziUspeh(
+          status,
+          "Model je uspešno istreniran."
+        );
+
+      } catch (error) {
+
+        prikaziGresku(
+          status,
+          error.message
+        );
+
+      } finally {
+
+        postaviDugme(
+          button,
+          false
+        );
+      }
+    }
+
+
+    // =====================================================
+    // KLASIFIKACIJA
+    // =====================================================
+
+    async function trainClassification(
+      model
+    ) {
+
+      const prefix =
+        model === "decision_tree"
+          ? "tree"
+          : "xgb";
+
+      const button =
+        document.getElementById(
+          prefix + "-button"
+        );
+
+      const status =
+        document.getElementById(
+          prefix + "-status"
+        );
+
+      prikaziUcitavanje(
+        status,
+        "Proces je u toku..."
+      );
+
+      postaviDugme(
+        button,
+        true
+      );
+
+      try {
+
+        const response =
+          await fetch(
+            `/klasifikacija/treniraj?model=${model}`,
+            {
+              method: "POST"
+            }
+          );
+
+        const data =
+          await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.detail ||
+            "Greška prilikom treniranja modela."
+          );
+        }
+
+        document.getElementById(
+          prefix + "-accuracy"
+        ).textContent =
+          Number(data.accuracy).toFixed(4);
+
+        document.getElementById(
+          prefix + "-precision"
+        ).textContent =
+          Number(data.precision).toFixed(4);
+
+        document.getElementById(
+          prefix + "-recall"
+        ).textContent =
+          Number(data.recall).toFixed(4);
+
+        document.getElementById(
+          prefix + "-f1"
+        ).textContent =
+          Number(data.f1).toFixed(4);
+
+        prikaziUspeh(
+          status,
+          "Model je uspešno istreniran."
+        );
+
+      } catch (error) {
+
+        prikaziGresku(
+          status,
+          error.message
+        );
+
+      } finally {
+
+        postaviDugme(
+          button,
+          false
+        );
+      }
+    }
+
+
+    // =====================================================
+    // PREDIKCIJA PRODAJE
+    // =====================================================
+
+    async function predictSales() {
+
+      const button =
+        document.getElementById(
+          "prediction-button"
+        );
+
+      const status =
+        document.getElementById(
+          "prediction-status"
+        );
+
+      const result =
+        document.getElementById(
+          "prediction-result"
+        );
+
+      prikaziUcitavanje(
+        status,
+        "Izračunavanje predikcije..."
+      );
+
+      result.style.display =
+        "none";
+
+      postaviDugme(
+        button,
+        true
+      );
+
+      const payload = {
+
+        store:
+          Number(
+            document.getElementById(
+              "store"
+            ).value
+          ),
+
+        dept:
+          Number(
+            document.getElementById(
+              "dept"
+            ).value
+          ),
+
+        is_holiday:
+          Number(
+            document.getElementById(
+              "holiday"
+            ).value
+          ),
+
+        year:
+          Number(
+            document.getElementById(
+              "year"
+            ).value
+          ),
+
+        month:
+          Number(
+            document.getElementById(
+              "month"
+            ).value
+          ),
+
+        week_of_year:
+          Number(
+            document.getElementById(
+              "week"
+            ).value
+          ),
+
+        day_of_week:
+          Number(
+            document.getElementById(
+              "day"
+            ).value
+          ),
+
+        sales_lag_1:
+          Number(
+            document.getElementById(
+              "lag1"
+            ).value
+          ),
+
+        sales_lag_2:
+          Number(
+            document.getElementById(
+              "lag2"
+            ).value
+          ),
+
+        sales_previous_7_weeks:
+          Number(
+            document.getElementById(
+              "previous7"
+            ).value
+          )
+      };
+
+      try {
+
+        const response =
+          await fetch(
+            "/modeli/predvidi",
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              body:
+                JSON.stringify(
+                  payload
+                )
+            }
+          );
+
+        const data =
+          await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.detail ||
+            "Greška prilikom predikcije."
+          );
+        }
+
+        document.getElementById(
+          "prediction-value"
+        ).textContent =
+          Number(
+            data.predicted_sales
+          ).toFixed(2);
+
+        result.style.display =
+          "block";
+
+        prikaziUspeh(
+          status,
+          "Predikcija je uspešno završena."
+        );
+
+      } catch (error) {
+
+        prikaziGresku(
+          status,
+          error.message
+        );
+
+      } finally {
+
+        postaviDugme(
+          button,
+          false
+        );
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

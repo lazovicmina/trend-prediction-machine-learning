@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+
+# VS Code
+.vscode/
+
+# Environment and logs
+.env
+*.log
+
+# Model files
+*.joblib
+
+# OS files
+.DS_Store
+
+# Large datasets
+data-service/data/
+
+# Generated Amazon data
+amazon/sentiment/amazon_sentiment_sample.csv
+amazon/collaborative_filtering/amazon_cf_interactions.csv

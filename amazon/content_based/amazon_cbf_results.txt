@@ -1,0 +1,260 @@
+CONTENT-BASED FILTERING - REZULTATI
+============================================================
+
+Ukupno obrađenih recenzija: 6,739,590
+Proizvoda sa najmanje 2 recenzije: 160,043
+Recenzija korišćenih za CBF: 228,580
+Proizvoda u CBF modelu: 5,000
+TF-IDF karakteristika: 10,000
+Broj preporuka po proizvodu: 10
+Broj proizvoda korišćenih za primere: 20
+
+STATISTIKA SLIČNOSTI
+------------------------------------------------------------
+Prosečna cosine similarity: 0.3389
+Minimalna cosine similarity: 0.1976
+Maksimalna cosine similarity: 0.7974
+
+PRIMERI PREPORUKA
+------------------------------------------------------------
+
+Proizvod: 0101635370
+  -> B00008V6NI (sličnost: 0.4112)
+  -> B0000EI9VR (sličnost: 0.4057)
+  -> B00005A1KZ (sličnost: 0.3994)
+  -> B00008N6VM (sličnost: 0.3988)
+  -> B000063574 (sličnost: 0.3974)
+  -> B0000CEOYI (sličnost: 0.3904)
+  -> B0000633EO (sličnost: 0.3870)
+  -> B0000CD0F4 (sličnost: 0.3801)
+  -> B00005QXWI (sličnost: 0.3798)
+  -> B0000AQIFW (sličnost: 0.3790)
+
+Proizvod: B00000J3MN
+  -> B000001OMT (sličnost: 0.3058)
+  -> B00000J1QU (sličnost: 0.2242)
+  -> B00006GJT4 (sličnost: 0.2201)
+  -> B00005TQKQ (sličnost: 0.2188)
+  -> B000001ON6 (sličnost: 0.2178)
+  -> B00006JPWW (sličnost: 0.2163)
+  -> B0000632H7 (sličnost: 0.2086)
+  -> B00001OPJQ (sličnost: 0.2050)
+  -> B00007DSRP (sličnost: 0.2025)
+  -> B00001OPJV (sličnost: 0.2016)
+
+Proizvod: B00003ZDJ7
+  -> B00005A3JA (sličnost: 0.5019)
+  -> B000093IRC (sličnost: 0.3880)
+  -> B00007JO1D (sličnost: 0.3787)
+  -> B0000AMRTM (sličnost: 0.3738)
+  -> B00007E8AB (sličnost: 0.3732)
+  -> B0000E1717 (sličnost: 0.3711)
+  -> B00005JDDZ (sličnost: 0.3668)
+  -> B00006IW1X (sličnost: 0.3603)
+  -> B000093IRD (sličnost: 0.3601)
+  -> B00008L3HV (sličnost: 0.3568)
+
+Proizvod: B00004XRDM
+  -> B00006IRWR (sličnost: 0.2365)
+  -> 6073894996 (sličnost: 0.2321)
+  -> B00009XNUU (sličnost: 0.2303)
+  -> B00008Y0U5 (sličnost: 0.2180)
+  -> B00009PGNT (sličnost: 0.2159)
+  -> B00007E7NH (sličnost: 0.2106)
+  -> B00006JQ5Z (sličnost: 0.2085)
+  -> B00006B8CH (sličnost: 0.2004)
+  -> B00005133U (sličnost: 0.1982)
+  -> B00009R9FJ (sličnost: 0.1976)
+
+Proizvod: B0000511JH
+  -> B00004R8V2 (sličnost: 0.6374)
+  -> B00005B5DR (sličnost: 0.5812)
+  -> B0000630TP (sličnost: 0.3205)
+  -> B000068ILF (sličnost: 0.2889)
+  -> B00005AC8W (sličnost: 0.2878)
+  -> B00005OILF (sličnost: 0.2701)
+  -> B00004TENT (sličnost: 0.2686)
+  -> B00008CQJO (sličnost: 0.2652)
+  -> B00005OILE (sličnost: 0.2646)
+  -> B00006B9QG (sličnost: 0.2588)
+
+Proizvod: B00005KK2Q
+  -> B000088USR (sličnost: 0.3743)
+  -> B00005BABT (sličnost: 0.3641)
+  -> B000087BWL (sličnost: 0.3441)
+  -> B000063W8Z (sličnost: 0.3438)
+  -> B0000899VM (sličnost: 0.3414)
+  -> B00006FXHQ (sličnost: 0.3391)
+  -> B00008RHA3 (sličnost: 0.3390)
+  -> B00005N7YY (sličnost: 0.3355)
+  -> B000088USX (sličnost: 0.3327)
+  -> B000087BV9 (sličnost: 0.3326)
+
+Proizvod: B00005T3FP
+  -> B00006343N (sličnost: 0.3779)
+  -> B00005T3EM (sličnost: 0.3563)
+  -> B0000D8IYC (sličnost: 0.3521)
+  -> B00006343O (sličnost: 0.3518)
+  -> B000068CNT (sličnost: 0.3475)
+  -> B000068CNM (sličnost: 0.3433)
+  -> B0000510NU (sličnost: 0.3428)
+  -> B00003CWDK (sličnost: 0.3428)
+  -> B00003CWDQ (sličnost: 0.3355)
+  -> B00006343P (sličnost: 0.3327)
+
+Proizvod: B000065BP9
+  -> B000065BPB (sličnost: 0.7974)
+  -> B00007E7C8 (sličnost: 0.7933)
+  -> B00001P4ZH (sličnost: 0.7883)
+  -> B00001WRSJ (sličnost: 0.7879)
+  -> B00004T8R2 (sličnost: 0.7653)
+  -> B000089GN3 (sličnost: 0.7556)
+  -> B00005N9D3 (sličnost: 0.7478)
+  -> B00005QBU9 (sličnost: 0.7375)
+  -> B00005RFD3 (sličnost: 0.7062)
+  -> B0000CE1UO (sličnost: 0.6993)
+
+Proizvod: B000068O1T
+  -> B000068O0Y (sličnost: 0.2979)
+  -> B000068O18 (sličnost: 0.2633)
+  -> B000068O1K (sličnost: 0.2427)
+  -> B000068O3C (sličnost: 0.2373)
+  -> B000068O1B (sličnost: 0.2358)
+  -> B000068O1D (sličnost: 0.2356)
+  -> B000068NXH (sličnost: 0.2352)
+  -> B00006345D (sličnost: 0.2335)
+  -> B000068O52 (sličnost: 0.2325)
+  -> B0000D89M6 (sličnost: 0.2317)
+
+Proizvod: B00006BBIF
+  -> B00004Z8GN (sličnost: 0.4187)
+  -> B00004Z8BC (sličnost: 0.4185)
+  -> B0000DZEZB (sličnost: 0.3942)
+  -> B0000DZEZK (sličnost: 0.3600)
+  -> B000093UPO (sličnost: 0.3442)
+  -> B0000DZEZ9 (sličnost: 0.3405)
+  -> B0000E6RI1 (sličnost: 0.3170)
+  -> B00009V332 (sličnost: 0.2814)
+  -> B00008XY4D (sličnost: 0.2579)
+  -> B00007FHDP (sličnost: 0.2536)
+
+Proizvod: B00006I5JN
+  -> B00001QHP5 (sličnost: 0.3630)
+  -> B00008ZPN3 (sličnost: 0.3182)
+  -> B0000C8VU8 (sličnost: 0.2972)
+  -> B000069092 (sličnost: 0.2889)
+  -> B00004TWLZ (sličnost: 0.2874)
+  -> B00005K4BJ (sličnost: 0.2849)
+  -> B00006I5JT (sličnost: 0.2842)
+  -> B00006JK37 (sličnost: 0.2831)
+  -> B00006I5JM (sličnost: 0.2817)
+  -> B00009VSBE (sličnost: 0.2809)
+
+Proizvod: B00006RVNH
+  -> B00003CWEK (sličnost: 0.4093)
+  -> B00006JKW5 (sličnost: 0.3930)
+  -> B00006RVNX (sličnost: 0.3608)
+  -> B00005MDZD (sličnost: 0.3500)
+  -> B00006JPU2 (sličnost: 0.3467)
+  -> B00006345I (sličnost: 0.3390)
+  -> B00006RVNQ (sličnost: 0.3304)
+  -> B00006RVNR (sličnost: 0.3304)
+  -> B00003CWE5 (sličnost: 0.3282)
+  -> B000067SMI (sličnost: 0.3030)
+
+Proizvod: B000087LI2
+  -> B00000J40X (sličnost: 0.2707)
+  -> B00005B8ME (sličnost: 0.2574)
+  -> B000066TPN (sličnost: 0.2512)
+  -> B00005B8M1 (sličnost: 0.2466)
+  -> B0000DJEK7 (sličnost: 0.2433)
+  -> B00000J40U (sličnost: 0.2324)
+  -> B0000AN4EG (sličnost: 0.2279)
+  -> B00005UK9P (sličnost: 0.2278)
+  -> B00005UK9O (sličnost: 0.2174)
+  -> B0000ULJWS (sličnost: 0.2115)
+
+Proizvod: B00008X5EA
+  -> B00003CW9S (sličnost: 0.2815)
+  -> B00003CWEK (sličnost: 0.2795)
+  -> B0000D89CX (sličnost: 0.2653)
+  -> B0000D89M6 (sličnost: 0.2590)
+  -> B00006RVNX (sličnost: 0.2487)
+  -> B00003CWE5 (sličnost: 0.2464)
+  -> B00006JPU2 (sličnost: 0.2445)
+  -> B00003CWA0 (sličnost: 0.2432)
+  -> B00006JP5E (sličnost: 0.2327)
+  -> B000068O1T (sličnost: 0.2309)
+
+Proizvod: B00009QOQB
+  -> B0000WS0NC (sličnost: 0.4124)
+  -> B00009QOTA (sličnost: 0.3975)
+  -> B00009QORF (sličnost: 0.3950)
+  -> B00009QOU5 (sličnost: 0.3908)
+  -> B00005T3BD (sličnost: 0.3604)
+  -> B000063TJY (sličnost: 0.3565)
+  -> B00005T3C8 (sličnost: 0.3470)
+  -> B00009QOW4 (sličnost: 0.3336)
+  -> B00006I53B (sličnost: 0.3287)
+  -> B000067INH (sličnost: 0.3213)
+
+Proizvod: B00009UHCV
+  -> B00000J1V3 (sličnost: 0.3166)
+  -> B00000J1T1 (sličnost: 0.3118)
+  -> B00006HURK (sličnost: 0.3061)
+  -> B00000J1V5 (sličnost: 0.3061)
+  -> B00004Z5P4 (sličnost: 0.3049)
+  -> B000067RCT (sličnost: 0.2967)
+  -> B000067SMX (sličnost: 0.2961)
+  -> B00000JDF6 (sličnost: 0.2924)
+  -> B00004Z5L8 (sličnost: 0.2862)
+  -> B00004Z5H3 (sličnost: 0.2844)
+
+Proizvod: B00009XVLJ
+  -> B00009XVL7 (sličnost: 0.3863)
+  -> B00009UT9B (sličnost: 0.3567)
+  -> B0000DYV9N (sličnost: 0.3536)
+  -> B0000DYV7G (sličnost: 0.3296)
+  -> B0000DYV91 (sličnost: 0.3272)
+  -> B00009XVKY (sličnost: 0.3250)
+  -> B00009XVL0 (sličnost: 0.3242)
+  -> B0000DYVBZ (sličnost: 0.3156)
+  -> B0000BZIE0 (sličnost: 0.3134)
+  -> B00009XVKW (sličnost: 0.3084)
+
+Proizvod: B0000AQ58U
+  -> B00006I5BW (sličnost: 0.3426)
+  -> B0000AI1E0 (sličnost: 0.3370)
+  -> B0000BZL3G (sličnost: 0.3286)
+  -> B00006HOAQ (sličnost: 0.3189)
+  -> B0000BZL8X (sličnost: 0.3134)
+  -> B00006HOAN (sličnost: 0.3054)
+  -> B0000BZLC3 (sličnost: 0.3023)
+  -> B0000AJB6N (sličnost: 0.3010)
+  -> B0000BZL83 (sličnost: 0.2991)
+  -> B00009R6LG (sličnost: 0.2977)
+
+Proizvod: B0000CG4GF
+  -> B00000J08Q (sličnost: 0.3471)
+  -> B00000J0D5 (sličnost: 0.3360)
+  -> B00005MIU8 (sličnost: 0.3352)
+  -> B00006J05Y (sličnost: 0.3101)
+  -> B00000J0AR (sličnost: 0.2909)
+  -> B0000AR0I4 (sličnost: 0.2780)
+  -> B00004Z7H5 (sličnost: 0.2662)
+  -> B00008AWL0 (sličnost: 0.2347)
+  -> B00000JB7R (sličnost: 0.2284)
+  -> B0000AHO92 (sličnost: 0.2262)
+
+Proizvod: B0000WS0NC
+  -> B00009QOW4 (sličnost: 0.4926)
+  -> B00009QOTA (sličnost: 0.4770)
+  -> B00009QOU5 (sličnost: 0.4729)
+  -> B00005T3BD (sličnost: 0.4588)
+  -> B00006JPDI (sličnost: 0.4529)
+  -> B00005T3C8 (sličnost: 0.4523)
+  -> B000063TJY (sličnost: 0.4478)
+  -> B00006I53B (sličnost: 0.4191)
+  -> B000062VUQ (sličnost: 0.4174)
+  -> B00006B9W1 (sličnost: 0.4173)
+

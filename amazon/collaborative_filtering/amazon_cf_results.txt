@@ -1,0 +1,14 @@
+COLLABORATIVE FILTERING - REZULTATI
+=======================================================
+
+Ukupno interakcija: 758,307
+Korisnika: 103,572
+Proizvoda: 119,716
+
+Evaluiranih korisnika: 72,962
+TOP-K: 10
+Broj suseda po proizvodu: 50
+
+Precision@10: 0.0047
+Recall@10: 0.0233
+Hit Rate@10: 0.0407

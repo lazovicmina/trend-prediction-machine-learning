@@ -1,0 +1,26 @@
+AMAZON SENTIMENT ANALYSIS RESULTS
+==================================================
+
+Samples per class: 100,000
+Total samples: 199,977
+
+TF-IDF features: 30,000
+
+Accuracy: 0.9280
+Precision: 0.9335
+Recall: 0.9217
+F1-score: 0.9275
+
+Confusion Matrix:
+[[18685  1314]
+ [ 1566 18431]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    Negative       0.92      0.93      0.93     19999
+    Positive       0.93      0.92      0.93     19997
+
+    accuracy                           0.93     39996
+   macro avg       0.93      0.93      0.93     39996
+weighted avg       0.93      0.93      0.93     39996

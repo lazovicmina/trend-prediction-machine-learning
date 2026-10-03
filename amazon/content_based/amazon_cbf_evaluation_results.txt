@@ -1,0 +1,14 @@
+CONTENT-BASED FILTERING - REZULTATI
+============================================================
+
+Ukupno interakcija: 758,307
+Ukupno proizvoda u CBF modelu: 100,231
+Train recenzija korišćenih za CBF: 529,614
+Evaluiranih korisnika: 5,000
+TOP-K: 10
+
+Test proizvoda poznatih CBF modelu: 87.87%
+
+Precision@10: 0.0059
+Recall@10: 0.0293
+Hit Rate@10: 0.0510
